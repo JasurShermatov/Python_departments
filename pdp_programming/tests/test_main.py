@@ -112,25 +112,61 @@
 
 
 import pytest
-def findClosestNumber(self, nums):
-    evens = list(map(abs, nums))
+# def findClosestNumber(self, nums):
+#     evens = list(map(abs, nums))
+#
+#     closest = min(evens)
+#     closest_negative = closest * -1
+#     if closest in nums:
+#         return closest
+#     return closest_negative
 
-    closest = min(evens)
-    closest_negative = closest * -1
-    if closest in nums:
-        return closest
-    return closest_negative
+
+#
+# @pytest.mark.parametrize(
+#     'numbers, expected',
+#     [
+#         ('[1,2,3]',TypeError),
+#         (5j,TypeError),
+#         (['a','b','c'],TypeError),
+#     ]
+# )
+# def test_findClosestNumber(numbers, expected):
+#     pytest.raises(expected, findClosestNumber, numbers)
 
 
+def isAnagram(s, t):
+    if not isinstance(s, str) or not isinstance(t, str):
+        raise TypeError('Arguments must be strings')
+    if len(s) != len(t):
+        return False
+
+    for i in set(s):
+        if s.count(i) != t.count(i):
+            return False
+    return True
+
+
+
+import pytest
+from contextlib import nullcontext as does_not_raise
 
 @pytest.mark.parametrize(
-    'numbers, expected',
+    "s, t, expected, x",
     [
-        ('[1,2,3]',TypeError),
-        (5j,TypeError),
-        (['a','b','c'],TypeError),
+        ("anagram", "nagaram", True, does_not_raise()),
+        ("rat", "tar", True, does_not_raise()),
+        ("hello", "world", False, does_not_raise()),
+        ("", "", True, does_not_raise()),
+
+        (["anagram"], "nagaram", True, pytest.raises(TypeError)),
+        ("hello", 123, False, pytest.raises(TypeError)),
+        (None, "world", False, pytest.raises(TypeError)),
+        (1234, 5678, False, pytest.raises(TypeError))
     ]
 )
-def test_findClosestNumber(numbers, expected):
-    pytest.raises(expected, findClosestNumber, numbers)
+def test_isAnagram(s, t, expected, x):
+    with x:
+        assert isAnagram(s, t) == expected
+
 
