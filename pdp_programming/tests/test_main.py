@@ -135,7 +135,16 @@ import pytest
 #     pytest.raises(expected, findClosestNumber, numbers)
 
 
+def isAnagram(s, t):
+    if not isinstance(s, str) or not isinstance(t, str):
+        raise TypeError('Arguments must be strings')
+    if len(s) != len(t):
+        return False
 
+    for i in set(s):
+        if s.count(i) != t.count(i):
+            return False
+    return True
 
 
 
@@ -191,6 +200,22 @@ import pytest
 
 
 
+@pytest.mark.parametrize(
+    "s, t, expected, x",
+    [
+        ("anagram", "nagaram", True, does_not_raise()),
+        ("rat", "tar", True, does_not_raise()),
+        ("hello", "world", False, does_not_raise()),
+        ("", "", True, does_not_raise()),
 
+        (["anagram"], "nagaram", True, pytest.raises(TypeError)),
+        ("hello", 123, False, pytest.raises(TypeError)),
+        (None, "world", False, pytest.raises(TypeError)),
+        (1234, 5678, False, pytest.raises(TypeError))
+    ]
+)
+def test_isAnagram(s, t, expected, x):
+    with x:
+        assert isAnagram(s, t) == expected
 
 
