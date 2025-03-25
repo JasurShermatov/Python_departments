@@ -23,8 +23,8 @@ class Cafe:
             "Sprite": 8000,
         }
         self.orders = {}
-        self.users_file = 'users.txt'
-        self.user_orders_dir = 'orders/'
+        self.users_file = "users.txt"
+        self.user_orders_dir = "orders/"
         if not os.path.exists(self.user_orders_dir):
             os.makedirs(self.user_orders_dir)
 
@@ -46,21 +46,23 @@ class Cafe:
 
     def register_user(self):
         if not os.path.exists(self.users_file):
-            open(self.users_file, 'w').close()
+            open(self.users_file, "w").close()
 
-        with open(self.users_file, 'r') as f:
+        with open(self.users_file, "r") as f:
             users = f.readlines()
         user_count = len(users) + 1
         name = input("Ismingizni kiriting: ")
         while True:
             username = input("Username kiriting: ")
-            if username + '\n' in users:
+            if username + "\n" in users:
                 print("Bu username band. Qaytadan urinib ko'ring.")
             else:
-                with open(self.users_file, 'a') as f:
-                    f.write(username + '\n')
+                with open(self.users_file, "a") as f:
+                    f.write(username + "\n")
                 break
-        print(f"Assalomu alaykum, {name}! Siz bizning {user_count}-foydalanuvchimizsiz.")
+        print(
+            f"Assalomu alaykum, {name}! Siz bizning {user_count}-foydalanuvchimizsiz."
+        )
         return username
 
     def customer_menu(self):
@@ -83,7 +85,9 @@ class Cafe:
                 self.calculate_bill(username)
                 break
             else:
-                print(" ♦️Noto'g'ri tanlov, iltimos, mavjud raqamlardan birini tanlang ♦️")
+                print(
+                    " ♦️Noto'g'ri tanlov, iltimos, mavjud raqamlardan birini tanlang ♦️"
+                )
 
     def show_food_menu(self, username):
         print("Ovqat menyusi:")
@@ -99,7 +103,9 @@ class Cafe:
 
     def take_order(self, username, menu):
         while True:
-            choice = int(input("Iltimos, tanlangan raqamni kiriting (tugatish uchun 0): "))
+            choice = int(
+                input("Iltimos, tanlangan raqamni kiriting (tugatish uchun 0): ")
+            )
             if choice == 0:
                 break
             if choice in range(1, len(menu) + 1):
@@ -110,7 +116,7 @@ class Cafe:
 
     def place_order(self, username, item, price):
         order_file = os.path.join(self.user_orders_dir, f"{username}.txt")
-        with open(order_file, 'a') as f:
+        with open(order_file, "a") as f:
             f.write(f"{datetime.now()} - {item} - {price} so'm\n")
         if item in self.orders:
             self.orders[item] += 1
@@ -119,7 +125,11 @@ class Cafe:
         print(f"{item} buyurtmangiz qabul qilindi.")
 
     def calculate_bill(self, username):
-        total = sum((self.food_menu.get(item, 0) + self.drinks_menu.get(item, 0)) * self.orders[item] for item in self.orders)
+        total = sum(
+            (self.food_menu.get(item, 0) + self.drinks_menu.get(item, 0))
+            * self.orders[item]
+            for item in self.orders
+        )
         print(f"Jami to'lov: {total} so'm. Haridingiz uchun rahmat!")
         self.orders.clear()
 
@@ -138,7 +148,7 @@ class Cafe:
         username = input("Username ni qidiring: ")
         order_file = os.path.join(self.user_orders_dir, f"{username}.txt")
         if os.path.exists(order_file):
-            with open(order_file, 'r') as f:
+            with open(order_file, "r") as f:
 
                 print(f"♦️{username}   buyurtma tarixi:♦️")
                 print(f.read())
@@ -188,7 +198,9 @@ class Cafe:
         print(f"{dish_name} menyuga {price} so'mga qo'shildi.")
 
     def remove_dish(self):
-        dish_type = input("Olib tashamoqchi bo'lgan menyu turi (1. Ovqat / 2. Ichimlik): ")
+        dish_type = input(
+            "Olib tashamoqchi bo'lgan menyu turi (1. Ovqat / 2. Ichimlik): "
+        )
         dish_name = input("Olib tashamoqchi bo'lgan nomini kiriting: ")
         if dish_type == "1" and dish_name in self.food_menu:
             del self.food_menu[dish_name]
@@ -202,7 +214,9 @@ class Cafe:
     def change_prices(self):
         print("Mavjud menyu:")
         for item in {**self.food_menu, **self.drinks_menu}:
-            print(f"{item} - {self.food_menu.get(item, self.drinks_menu.get(item))} so'm")
+            print(
+                f"{item} - {self.food_menu.get(item, self.drinks_menu.get(item))} so'm"
+            )
         dish_name = input("Narxini o'zgartirmoqchi bo'lgan nomini tanlang: ")
         if dish_name in self.food_menu or dish_name in self.drinks_menu:
             new_price = int(input("Yangi narxni kiriting: "))
@@ -224,7 +238,7 @@ class Cafe:
 
     def view_order_history(self):
         for filename in os.listdir(self.user_orders_dir):
-            with open(os.path.join(self.user_orders_dir, filename), 'r') as f:
+            with open(os.path.join(self.user_orders_dir, filename), "r") as f:
                 print(f"{filename} tarix:")
                 print(f.read())
 

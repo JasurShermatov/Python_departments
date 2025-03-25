@@ -24,7 +24,7 @@ class Mentor(User):
         print(f"{self.name} login as mentor")
 
 
-student = Student('John', 'john@example.com')
+student = Student("John", "john@example.com")
 mentor = Mentor("Smith", "smith@example.com")
 student.login()
 student.submit_task()

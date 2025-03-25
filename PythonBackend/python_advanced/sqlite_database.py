@@ -33,7 +33,7 @@ import sys
 import sqlite3
 
 
-class ContactsRepo():
+class ContactsRepo:
     def __init__(self, dp):
         self.dp = dp
 
@@ -55,7 +55,9 @@ if __name__ == "__main__":
     command = sys.argv[1]
 
     if command not in available_commands:
-        sys.exit(f"Unknown command: {command}\nAvailable commands: {available_commands}")
+        sys.exit(
+            f"Unknown command: {command}\nAvailable commands: {available_commands}"
+        )
 
     print(f"Executing command: {command}")
 

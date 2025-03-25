@@ -50,16 +50,12 @@
 #
 
 
-
-
-
 # Queue uchun quyidagi funksiyalarni yozish kerak:
 # enqueue: elementni queue ning oxiriga qo'shadi.
 # dequeue: queue ning boshidan elementni olib tashlaydi va qaytaradi.
 # front: queue ning birinchi elementini qaytaradi.
 # size: queue dagi elementlar sonini qaytaradi.
 # empty: queue bo'sh yoki yo'qligini tekshiradi.
-
 
 
 class Queue:
@@ -116,4 +112,3 @@ def test_queue():
 if __name__ == "__main__":
     test_queue()
     print("All tests passed!")
-

@@ -99,7 +99,9 @@ class CashMachine:
 
     def see_balance_uzb(self):
         print(f"Sizning balansingiz: {self.balance} so'm")
-        xoxlaysizmi = input("Yana boshqa operation bajarishni xoxlaysizmi (1.ha/2.yo'q)").lower()
+        xoxlaysizmi = input(
+            "Yana boshqa operation bajarishni xoxlaysizmi (1.ha/2.yo'q)"
+        ).lower()
         if xoxlaysizmi == "1":
             self.start_uzb()
         elif xoxlaysizmi == "2":
@@ -133,7 +135,9 @@ class CashMachine:
             print(f"Sizning yangi balansingiz: {self.balance} so'm")
         except ValueError:
             print("Iltimos, to'g'ri miqdorni kiriting.")
-        xoxlaysizmi = input("Yana boshqa operation bajarishni xoxlaysizmi (1.ha/2.yo'q)").lower()
+        xoxlaysizmi = input(
+            "Yana boshqa operation bajarishni xoxlaysizmi (1.ha/2.yo'q)"
+        ).lower()
         if xoxlaysizmi == "1":
             self.start_uzb()
         elif xoxlaysizmi == "2":
@@ -150,7 +154,9 @@ class CashMachine:
                 print(f"Your new balance: {self.balance} sum")
         except ValueError:
             print("Unknown amount entered.")
-            xoxlaysizmi = input("Would you like another operation? (1.Yes/2.no)").lower().split()
+            xoxlaysizmi = (
+                input("Would you like another operation? (1.Yes/2.no)").lower().split()
+            )
             if xoxlaysizmi == "1":
                 self.start_eng()
             elif xoxlaysizmi == "2":
@@ -167,7 +173,9 @@ class CashMachine:
                 print(f"Sizning yangi balansingiz: {self.balance} so'm")
         except ValueError:
             print("Iltimos, to'g'ri miqdorni kiriting.")
-            xoxlaysizmi = input("Yana boshqa operation bajarishni xoxlaysizmi (1.ha/2.yo'q)").lower()
+            xoxlaysizmi = input(
+                "Yana boshqa operation bajarishni xoxlaysizmi (1.ha/2.yo'q)"
+            ).lower()
             if xoxlaysizmi == "1":
                 self.start_uzb()
             elif xoxlaysizmi == "2":

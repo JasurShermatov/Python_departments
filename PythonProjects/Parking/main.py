@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 
 
-
 class ParkingSpot(ABC):
     def __init__(self, spot_id: int, is_free: bool = True):
         self.id = spot_id
@@ -12,7 +11,6 @@ class ParkingSpot(ABC):
         return self.is_free
 
 
-
 class Vehicle(ABC):
     def __init__(self, license_no: str):
         self.__license_no = license_no
@@ -20,7 +18,6 @@ class Vehicle(ABC):
     @abstractmethod
     def assign_ticket(self):
         pass
-
 
 
 class Payment(ABC):
@@ -34,7 +31,6 @@ class Payment(ABC):
         pass
 
 
-
 class CashPayment(Payment):
     def __init__(self, amount: float, status: str, timestamp: datetime):
         super().__init__(amount, status, timestamp)
@@ -43,38 +39,52 @@ class CashPayment(Payment):
         print("Cash payment initiated")
 
 
-
 class CreditCardPayment(Payment):
-    def __init__(self, amount: float, status: str, timestamp: datetime, card_number: str):
+    def __init__(
+        self, amount: float, status: str, timestamp: datetime, card_number: str
+    ):
         super().__init__(amount, status, timestamp)
         self.card_number = card_number
 
     def initiate_transaction(self):
         print("Credit card payment initiated")
 
+
 class Car(Vehicle):
     def assign_ticket(self):
         print("Ticket assigned to Car")
+
 
 class Truck(Vehicle):
     def assign_ticket(self):
         print("Ticket assigned to Truck")
 
+
 class MotorCycle(Vehicle):
     def assign_ticket(self):
         print("Ticket assigned to Motorcycle")
+
 
 class Van(Vehicle):
     def assign_ticket(self):
         print("Ticket assigned to Van")
 
+
 class ParkingTicket:
-    def __init__(self, ticket_no: int, timestamp: datetime, exit_time: datetime = None, amount: float = 0, payment: Payment = None):
+    def __init__(
+        self,
+        ticket_no: int,
+        timestamp: datetime,
+        exit_time: datetime = None,
+        amount: float = 0,
+        payment: Payment = None,
+    ):
         self.__ticket_no = ticket_no
         self.__timestamp = timestamp
         self.__exit_time = exit_time
         self.__amount = amount
         self.__payment = payment
+
 
 class Entrance:
     def __init__(self, entrance_id: int):
@@ -82,6 +92,7 @@ class Entrance:
 
     def get_ticket(self) -> ParkingTicket:
         return ParkingTicket(ticket_no=1, timestamp=datetime.now())
+
 
 class Exit:
     def __init__(self, exit_id: int):
@@ -97,12 +108,11 @@ class ParkingLot:
         self.__name = name
         self.__address = address
 
-    def get_parking_ticket(self)  -> ParkingTicket:
+    def get_parking_ticket(self) -> ParkingTicket:
         return ParkingTicket(ticket_no=1, timestamp=datetime.now())
 
     def is_full(self) -> bool:
         return False
-
 
 
 class Account(ABC):
@@ -117,7 +127,6 @@ class Account(ABC):
         pass
 
 
-
 class DisplayBoard:
     def __init__(self, id_parking: int, parking_spots: dict):
         self.id = id_parking
@@ -130,7 +139,6 @@ class DisplayBoard:
         for spot in self.parking_spots.values():
             if spot.get_is_free():
                 print(f"Spot {spot.id} is free")
-
 
 
 class Admin(Account):
@@ -157,8 +165,6 @@ class Admin(Account):
         print("Password reset")
 
 
-
-
 class ParkingAgent(Account):
     def process_ticket(self) -> bool:
         print("Ticket processed")
@@ -172,12 +178,3 @@ class ParkingRate:
 
     def calculate(self):
         return self.hours * self.rate
-
-
-
-
-
-
-
-
-

@@ -84,7 +84,6 @@
 #     pytest.raises(TypeError, _sum, 1+2j, 2+3j)
 
 
-
 # from contextlib import nullcontext as does_not_raise
 # from src.main import sum_
 # import pytest
@@ -107,11 +106,8 @@
 #         assert sum_(x, y) == expected
 
 
-
-
-
-
 import pytest
+
 # def findClosestNumber(self, nums):
 #     evens = list(map(abs, nums))
 #
@@ -137,7 +133,7 @@ import pytest
 
 def isAnagram(s, t):
     if not isinstance(s, str) or not isinstance(t, str):
-        raise TypeError('Arguments must be strings')
+        raise TypeError("Arguments must be strings")
     if len(s) != len(t):
         return False
 
@@ -145,7 +141,6 @@ def isAnagram(s, t):
         if s.count(i) != t.count(i):
             return False
     return True
-
 
 
 # def isAnagram(s, t):
@@ -183,21 +178,9 @@ def isAnagram(s, t):
 #         assert isAnagram(s, t) == expected
 
 
-
-
 # def test_fixture(example_fixture):
 #     name= example_fixture["name"]
 #     assert name == "Alex"
-
-
-
-
-
-
-
-
-
-
 
 
 @pytest.mark.parametrize(
@@ -207,15 +190,12 @@ def isAnagram(s, t):
         ("rat", "tar", True, does_not_raise()),
         ("hello", "world", False, does_not_raise()),
         ("", "", True, does_not_raise()),
-
         (["anagram"], "nagaram", True, pytest.raises(TypeError)),
         ("hello", 123, False, pytest.raises(TypeError)),
         (None, "world", False, pytest.raises(TypeError)),
-        (1234, 5678, False, pytest.raises(TypeError))
-    ]
+        (1234, 5678, False, pytest.raises(TypeError)),
+    ],
 )
 def test_isAnagram(s, t, expected, x):
     with x:
         assert isAnagram(s, t) == expected
-
-

@@ -15,9 +15,6 @@
 # print(student_.about)
 
 
-
-
-
 # class Student:
 #     def __init__(self, name, age):
 #         self.name = name
@@ -41,11 +38,6 @@
 # print(john == alice)  # True
 
 
-
-
-
-
-
 # import random
 #
 # res = random.randint(1,3)
@@ -58,4 +50,4 @@
 #     print("jasur yuqazdi")
 
 
-print('Hello world')
+print("Hello world")

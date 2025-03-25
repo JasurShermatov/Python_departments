@@ -1,5 +1,7 @@
 # bank hisobingizi ko'ra oladigan dasturcha
-bank_account=1000000000
+bank_account = 1000000000
+
+
 def bank_account_login():
     my_pasword = "12345"
     urinishlar = 3
@@ -13,52 +15,38 @@ def bank_account_login():
         else:
             urinishlar -= 1
 
-            print("Noto'g'ri parol kiritildi! iltimos tekshirib qaytadan urinib ko'ring!")
+            print(
+                "Noto'g'ri parol kiritildi! iltimos tekshirib qaytadan urinib ko'ring!"
+            )
             print(f"Sizda qoldi {urinishlar} dona urinish")
             print("Kirish imkonsiz")
+
+
 bank_account_login()
-
-
-
-
-
-
-
-
-
-
 
 
 # Xona deraza va eshik o'lchamlarini kiritasi bu esa sizga qancha kraska ketishini hisoblaydi
 print("siz devor necha km ekanligini hisoblab qancha bo'yoq ketganini hisoblang")
-eni=float(input("Devor eninni kiriting="))
-boyi=float(input("Devor boyini kiritng="))
-balandlik=float(input("Devor balandligini kiriting="))
-deraza_soni=int(input("Derazalar sonini kirit="))
-deraza_eni=float(input("Deraza enini kiriting="))
-deraza_boyi=float(input("Deraza boyini kiriting="))
-eshiklar_soni=int(input("Eshiklar sonini kiriting="))
-eshik_eni=float(input("Eshik enini kiriting="))
-eshik_boyi=float(input("Eshik boyini kiriting="))
-devor=(eni*balandlik+boyi*balandlik)*2
-harajatlar=float(input("Enter the price of kraska:="))
+eni = float(input("Devor eninni kiriting="))
+boyi = float(input("Devor boyini kiritng="))
+balandlik = float(input("Devor balandligini kiriting="))
+deraza_soni = int(input("Derazalar sonini kirit="))
+deraza_eni = float(input("Deraza enini kiriting="))
+deraza_boyi = float(input("Deraza boyini kiriting="))
+eshiklar_soni = int(input("Eshiklar sonini kiriting="))
+eshik_eni = float(input("Eshik enini kiriting="))
+eshik_boyi = float(input("Eshik boyini kiriting="))
+devor = (eni * balandlik + boyi * balandlik) * 2
+harajatlar = float(input("Enter the price of kraska:="))
 
-deraza=deraza_eni*deraza_boyi*deraza_soni
-eshik=eshik_eni*eshik_boyi*eshiklar_soni
-hajm=(devor-deraza-eshik)/0.6
-javop=hajm*harajatlar
+deraza = deraza_eni * deraza_boyi * deraza_soni
+eshik = eshik_eni * eshik_boyi * eshiklar_soni
+hajm = (devor - deraza - eshik) / 0.6
+javop = hajm * harajatlar
 print(f" Sizga {javop} so'm kerak bo'ladi xonani bo'yash uchun")
 
 
-
-
-
-
-
-
-
-
- # Radar uchun dastur 3 xil turdagi istisno davlat raqamlariga jarima yozmaydi
+# Radar uchun dastur 3 xil turdagi istisno davlat raqamlariga jarima yozmaydi
 def jarima_yoz():
     nomer = input("Please, enter the number: ")
 
@@ -68,20 +56,6 @@ def jarima_yoz():
         print("Jarima yozma bu davlat raqami:")
     else:
         print("Jarima yoz bu davlat raqami emas")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Omborxona uchun dastur
@@ -117,12 +91,15 @@ class Ombor:
 
     def mahsulot_qolganligi(self):
         # mahsulot_nomi = input("Mahsulot nomini kiriting: ")
-        for i,x in self.mahsulotlar.items():
-            if self.mahsulotlar[i]!=0:
-            # print(f"{mahsulot_nomi} mahsulotidan qolgan miqdori: {self.mahsulotlar[mahsulot_nomi]} ta")
+        for i, x in self.mahsulotlar.items():
+            if self.mahsulotlar[i] != 0:
+                # print(f"{mahsulot_nomi} mahsulotidan qolgan miqdori: {self.mahsulotlar[mahsulot_nomi]} ta")
                 print(f"{i} dan {x} ta qolgan")
+
     def qolmagan_mahsulotlar(self):
-        qolmaganlar = [mahsulot for mahsulot, miqdor in self.mahsulotlar.items() if miqdor == 0]
+        qolmaganlar = [
+            mahsulot for mahsulot, miqdor in self.mahsulotlar.items() if miqdor == 0
+        ]
         print(f"Qolmagan mahsulotlar: {', '.join(qolmaganlar)}")
 
 
@@ -151,22 +128,7 @@ if __name__ == "__main__":
     main()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#restaurant menu si uchun dastru
+# restaurant menu si uchun dastru
 class Restaurant:
     def __init__(self):
         self.menu = {
@@ -179,18 +141,18 @@ class Restaurant:
             "norin": 40,
             "manti": 18,
             "salat": 12,
-            "choy": 5
+            "choy": 5,
         }
         self.orders = {}
 
     def welcome(self):
         print("Assalomu alaykum Restaurantimizga hush helibsiz!")
-        while (True):
+        while True:
             try:
                 response = input("Iltimo tanlang: (1.mijoz/2.admin) ")
-                if response == "mijoz" or response=="1":
+                if response == "mijoz" or response == "1":
                     self.customer_menu()
-                elif response == "admin" or response=="2":
+                elif response == "admin" or response == "2":
                     self.admin_login()
                 else:
                     print("Noto'g'ri tanlov, iltimos, mijoz yoki admin deb tanlang.")
@@ -218,7 +180,7 @@ class Restaurant:
 
     def order_again(self):
         again = input("Yana biror narsa buyurtma qilasizmi? (1.ha/2.yo'q): ")
-        if again.lower() == "ha" or again.lower() == "1" :
+        if again.lower() == "ha" or again.lower() == "1":
             self.customer_menu()
         else:
             self.calculate_bill()
@@ -233,14 +195,13 @@ class Restaurant:
             try:
                 password = input("Parolni kiriting: ")
 
-                if password == "2005" or password=="7777":
+                if password == "2005" or password == "7777":
                     self.admin_menu()
                 else:
                     print("Noto'g'ri parol, iltimos, qaytadan urinib ko'ring.")
                     self.admin_login()
             except Exception as e:
                 print("Notog'ri parol kiritildi")
-
 
     def admin_menu(self):
         print("Admin menyusi:")
@@ -307,27 +268,10 @@ restaurant = Restaurant()
 restaurant.run()
 
 
-
-
-
-
-
-
-
-
-
 def fibonacci(number: int) -> int:
-    if number <2:
+    if number < 2:
         return 1
-    return fibonacci(number-1) + fibonacci(number-2)
+    return fibonacci(number - 1) + fibonacci(number - 2)
+
 
 print(fibonacci(int(input("Enter a number: "))))
-
-
-
-
-
-
-
-
-

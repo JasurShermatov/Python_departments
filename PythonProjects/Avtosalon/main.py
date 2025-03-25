@@ -6,7 +6,9 @@ class CompletePurchase:
         print(f"\nThank you for your purchase! The total price is ${self.price}.")
         print("Purchase completed successfully.\n")
 
-        continue_option = input("Would you like to buy another car or exit? (1.buy again/2.exit)\n>>> ")
+        continue_option = input(
+            "Would you like to buy another car or exit? (1.buy again/2.exit)\n>>> "
+        )
         if continue_option == "1":
             return "restart"
         elif continue_option == "2":
@@ -23,7 +25,7 @@ class Avtosalon:
             "Hatchback": {"Ford Fiesta": 15000, "Volkswagen Golf": 20000},
             "Coupe": {"Chevrolet Camaro": 35000, "Ford Mustang": 40000},
             "Minivan": {"Honda Odyssey": 33000, "Toyota Sienna": 35000},
-            "SUV": {"Toyota RAV4": 27000, "Honda CR-V": 26000}
+            "SUV": {"Toyota RAV4": 27000, "Honda CR-V": 26000},
         }
         self.colors = ["black", "white", "gray"]
         self.color_prices = {"black": 500, "white": 300, "gray": 0}

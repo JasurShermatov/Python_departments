@@ -5,8 +5,6 @@
 # print(clothest_zero(numbers))
 
 
-
-
 # class Solution(object):
 #     def findClosestNumber(self, nums):
 #         evens = list(map(abs, nums))
@@ -18,14 +16,10 @@
 #         return closest_negative
 
 
-
-
 # def has_duplicate(list_):
 #     return len(list_) != len(set(list_))
 # print(has_duplicate([1, 2, 3, 4]))
 # print(has_duplicate([1, 2, 3, 1]))
-
-
 
 
 # class Solution:
@@ -35,9 +29,6 @@
 #             seen.add(n)
 #             n = sum(int(digit) ** 2 for digit in str(n))
 #         return n == 1
-
-
-
 
 
 # def fiz_biz(n):
@@ -58,12 +49,8 @@
 #
 
 
-
-def  check_anagram(str1, str2):
+def check_anagram(str1, str2):
     return sorted(str1) == sorted(str2)
+
+
 print(check_anagram("listenk", "silent"))
-
-
-
-
-

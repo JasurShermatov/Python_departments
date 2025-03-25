@@ -71,12 +71,9 @@
 # hello()
 
 
-
-
-
-
 # import datetime
 import time
+
 # def log(func):
 #     def inner():
 #         start=datetime.datetime.now()

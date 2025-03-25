@@ -40,7 +40,7 @@ class Vector:
         self.y = y
 
     def __str__(self):
-        return f'Vector: <{self.x}, {self.y}>'
+        return f"Vector: <{self.x}, {self.y}>"
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
@@ -63,7 +63,7 @@ class Vector:
 
     @property
     def magnitude(self):
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.x**2 + self.y**2)
 
 
 """ v3 = v1 + v2 #Bu yerda v1 va v2 ni yig'indisi orqali v3 topilgan """
@@ -77,5 +77,3 @@ if v1 > v2:
     """Bu yerda 2 ta Vector solishtirilgan """
 else:
     print("v2 is longer")
-
-

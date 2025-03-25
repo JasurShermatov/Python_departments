@@ -69,10 +69,6 @@
 # print(name(input("Enter your name?\n>>>")))
 
 
-
-
-
-
 # def factorial(num):
 #     """bu yerda esa function yordamida kishik factarial hioblaydigan dastur"""
 #     if num == 1:
@@ -82,8 +78,6 @@
 #
 # a = int(input("Enter num: "))
 # print(factorial(a))
-
-
 
 
 # def check_maximal(*names):
@@ -97,8 +91,6 @@
 #             maximal_num= nume
 #     return maximal_num
 # print(check_maximal("shaxzod", "jasur"))
-
-
 
 
 # def check_minimal(*names):
@@ -119,7 +111,6 @@
 # print(reversed_words(word_))
 
 
-
 # def reversed_words(*words):
 #     reversed_words = []
 #     for i, word in enumerate(words):
@@ -129,10 +120,6 @@
 # print(reversed_words("word_", "poxxuy"))
 
 
-
-
-
-
 # def reverse_recursive(name):
 #
 #     if len(name) == 0:
@@ -140,8 +127,3 @@
 #     return reverse_recursive(name[1:]) + name[0]
 # name = input("Ismingizni kiriting?\n>>>")
 # print(f"{name} ismining teskarisi = {reverse_recursive(name)} ga teng:!")
-
-
-
-
-

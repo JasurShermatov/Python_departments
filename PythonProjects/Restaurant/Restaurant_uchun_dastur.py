@@ -11,18 +11,18 @@ class Restaurant:
             "norin": 40,
             "manti": 18,
             "salat": 12,
-            "choy": 5
+            "choy": 5,
         }
         self.orders = {}
 
     def welcome(self):
         print("Assalomu alaykum Restaurantimizga hush helibsiz!")
-        while (True):
+        while True:
             try:
                 response = input("Iltimo tanlang: (1.mijoz/2.admin) ")
-                if response == "mijoz" or response=="1":
+                if response == "mijoz" or response == "1":
                     self.customer_menu()
-                elif response == "admin" or response=="2":
+                elif response == "admin" or response == "2":
                     self.admin_login()
                 else:
                     print("Noto'g'ri tanlov, iltimos, mijoz yoki admin deb tanlang.")
@@ -50,7 +50,7 @@ class Restaurant:
 
     def order_again(self):
         again = input("Yana biror narsa buyurtma qilasizmi? (1.ha/2.yo'q): ")
-        if again.lower() == "ha" or again.lower() == "1" :
+        if again.lower() == "ha" or again.lower() == "1":
             self.customer_menu()
         else:
             self.calculate_bill()
@@ -65,14 +65,13 @@ class Restaurant:
             try:
                 password = input("Parolni kiriting: ")
 
-                if password == "2005" or password=="7777":
+                if password == "2005" or password == "7777":
                     self.admin_menu()
                 else:
                     print("Noto'g'ri parol, iltimos, qaytadan urinib ko'ring.")
                     self.admin_login()
             except Exception as e:
                 print("Notog'ri parol kiritildi")
-
 
     def admin_menu(self):
         print("Admin menyusi:")

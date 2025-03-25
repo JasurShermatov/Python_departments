@@ -17,13 +17,10 @@ from datetime import datetime, timedelta
 # print(f"<<{selected_names[0]}> va <{selected_names[1]}>> bir jamoda o'ynaydi\n<<{selected_names[2]}>> ularga qarshi o'ynaydi")
 
 
-
-
 # from random import shuffle, choice
 # names = ["Python", "Java", "C", "C++", "JavaScript"]
 # name = choice(names)
 # print(name)
-
 
 
 # import itertools
@@ -34,6 +31,7 @@ from datetime import datetime, timedelta
 
 
 import calendar
+
 while True:
     try:
         year = int(input("Enter year: "))

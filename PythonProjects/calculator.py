@@ -40,8 +40,6 @@ while True:
         print("Noma'lum kiritish. Iltimos, raqam kiriting.")
 
     davom_etish = input("Dastur ishlashda davom etsinmi? (ha/yo'q): ").strip().lower()
-    if davom_etish != 'ha':
+    if davom_etish != "ha":
         print("Dastur to'xtatildi.")
         break
-
-
