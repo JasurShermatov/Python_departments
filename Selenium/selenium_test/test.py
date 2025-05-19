@@ -17,24 +17,28 @@ class WebsiteScraper:
 
         # Chrome sozlamalari
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Brauzerni yashirin rejimda ishga tushirish
+        chrome_options.add_argument(
+            "--headless"
+        )  # Brauzerni yashirin rejimda ishga tushirish
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+        self.driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()), options=chrome_options
+        )
 
         # Papkalarni yaratish
         os.makedirs(self.output_dir, exist_ok=True)
 
     def save_file(self, url, content, sub_dir=""):
         path = urlparse(url).path
-        if path.endswith('/'):
-            path += 'index.html'
+        if path.endswith("/"):
+            path += "index.html"
         elif not os.path.splitext(path)[1]:
-            path += '.html'
+            path += ".html"
 
-        file_path = os.path.join(self.output_dir, sub_dir, path.lstrip('/'))
+        file_path = os.path.join(self.output_dir, sub_dir, path.lstrip("/"))
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
         with open(file_path, "wb") as file:

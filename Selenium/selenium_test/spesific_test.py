@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
+
 class VideoScraper:
     def __init__(self, base_url):
         self.base_url = base_url
@@ -26,7 +27,9 @@ class VideoScraper:
         # 🔥 Performance log'ni faollashtirish
         chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
 
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+        self.driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()), options=chrome_options
+        )
         os.makedirs(self.output_dir, exist_ok=True)
 
     def download_video(self, video_url):
@@ -47,7 +50,9 @@ class VideoScraper:
                         file.write(chunk)
                 print(f"✅ Yuklandi: {file_path}")
             else:
-                print(f"❌ Yuklab olishda xatolik: {video_url} | Status: {response.status_code}")
+                print(
+                    f"❌ Yuklab olishda xatolik: {video_url} | Status: {response.status_code}"
+                )
 
         except Exception as e:
             print(f"❌ Yuklab olishda xatolik: {e}")
@@ -59,7 +64,7 @@ class VideoScraper:
 
     def extract_blob_urls(self):
         try:
-            logs = self.driver.get_log('performance')  # ✅ Endi ishlaydi!
+            logs = self.driver.get_log("performance")  # ✅ Endi ishlaydi!
             for log in logs:
                 log_data = json.loads(log["message"])["message"]
                 if log_data["method"] == "Network.responseReceived":
@@ -116,7 +121,11 @@ class VideoScraper:
         for link in links:
             next_url = link.get_attribute("href")
             link_text = link.text.lower()
-            if next_url and self.base_url in next_url and self.is_python_related(link_text):
+            if (
+                next_url
+                and self.base_url in next_url
+                and self.is_python_related(link_text)
+            ):
                 self.scrape_page(next_url)
 
     def start(self):
@@ -125,6 +134,7 @@ class VideoScraper:
         finally:
             self.driver.quit()
             print("✅✅✅ Barcha Python bilan bog'liq videolar yuklab olindi!")
+
 
 # 🚀 URLni kiritish
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.maximize_window()
 
-driver.get('https://www.axcapital.ae/')
+driver.get("https://www.axcapital.ae/")
 
 l = driver.find_element(By.XPATH, '//input[@placeholder="Your name"]')
 

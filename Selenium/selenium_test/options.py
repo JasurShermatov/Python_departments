@@ -6,7 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 import time
 
 
-
 options = webdriver.ChromeOptions()
 options.add_argument("--window-size=1920x1080")
 options.add_argument("--ignore-certificate-errors")
@@ -14,7 +13,9 @@ options.add_argument("--incognito")
 options.page_load_strategy = "eager"
 
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+)
 driver.get("https://www.axcapital.ae/")
 
 wait = WebDriverWait(driver, 10)

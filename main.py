@@ -4,7 +4,6 @@ from datetime import datetime
 import uuid
 
 
-
 class LibraryResource(ABC):
     def __init__(self, resource_id: str, title: str, author: str):
         self.resource_id = resource_id
@@ -324,5 +323,3 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
-

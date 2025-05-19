@@ -49,7 +49,9 @@ def monitor_system(duration=15):
         memory_usage.append(memory_percent)
         timestamps.append(time.time() - start_time)
 
-        print(f"Vaqt: {time.time() - start_time:.1f}s | CPU: {cpu_percent}% | Xotira: {memory_percent}%")
+        print(
+            f"Vaqt: {time.time() - start_time:.1f}s | CPU: {cpu_percent}% | Xotira: {memory_percent}%"
+        )
 
     return timestamps, cpu_usage, memory_usage
 
@@ -57,15 +59,15 @@ def monitor_system(duration=15):
 def plot_results(timestamps, cpu_usage, memory_usage):
     """Natijalarni grafikda ko'rsatish"""
     plt.figure(figsize=(10, 6))
-    plt.plot(timestamps, cpu_usage, label='CPU foydalanish %')
-    plt.plot(timestamps, memory_usage, label='Xotira foydalanish %')
-    plt.xlabel('Vaqt (soniya)')
-    plt.ylabel('Foydalanish foizi')
-    plt.title('Tizim resurslari foydalanish darajasi')
+    plt.plot(timestamps, cpu_usage, label="CPU foydalanish %")
+    plt.plot(timestamps, memory_usage, label="Xotira foydalanish %")
+    plt.xlabel("Vaqt (soniya)")
+    plt.ylabel("Foydalanish foizi")
+    plt.title("Tizim resurslari foydalanish darajasi")
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('system_performance.png')
+    plt.savefig("system_performance.png")
     plt.show()
 
 
@@ -99,16 +101,20 @@ def main():
     # Kompyuter haqida qo'shimcha ma'lumotlar
     print("\nKompyuter haqida qo'shimcha ma'lumotlar:")
     print(f"CPU modeli: {psutil.cpu_freq().current:.2f} MHz")
-    print(f"CPU maksimal chastotasi: {psutil.cpu_freq().max:.2f} MHz (agar mavjud bo'lsa)")
+    print(
+        f"CPU maksimal chastotasi: {psutil.cpu_freq().max:.2f} MHz (agar mavjud bo'lsa)"
+    )
 
-    disk_usage = psutil.disk_usage('/')
+    disk_usage = psutil.disk_usage("/")
     print(f"Disk hajmi: {disk_usage.total / (1024 ** 3):.2f} GB")
     print(f"Bo'sh disk hajmi: {disk_usage.free / (1024 ** 3):.2f} GB")
 
     # Natijalarni grafikda ko'rsatish
     try:
         # Monitoring natijalarini olish
-        timestamps, cpu_usage, memory_usage = monitor_system(0)  # 0 soniya chunki monitoring allaqachon tugagan
+        timestamps, cpu_usage, memory_usage = monitor_system(
+            0
+        )  # 0 soniya chunki monitoring allaqachon tugagan
         plot_results(timestamps, cpu_usage, memory_usage)
     except Exception as e:
         print(f"Grafikni chizishda xatolik: {e}")
