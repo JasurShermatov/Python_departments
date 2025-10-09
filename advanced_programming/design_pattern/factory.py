@@ -3,35 +3,42 @@ from abc import ABC, abstractmethod
 
 class ToyABC(ABC):
     @abstractmethod
-    def play(self):
+    def create(self):
         pass
 
 
 class Car(ToyABC):
-    def play(self):
-        print("Playing with a car")
+    def create(self):
+        print("Created car")
 
 
 class Doll(ToyABC):
-    def play(self):
-        print("Playing with a doll")
+    def create(self):
+        print("Created doll")
 
 
-TOY_VARIANTS = {
-    "car": Car(),
-    "doll": Doll(),
-}
+class ToyFactoryABC(ABC):
+    @abstractmethod
+    def build_toy(self):
+        pass
+
+    def build(self):
+        toy = self.build_toy()
+        return f'Building toy {toy.create()}'
 
 
-class ToyFactory:
-
-    @staticmethod
-    def create_toy(toy):
-        if toy in TOY_VARIANTS:
-            return TOY_VARIANTS[toy].play()
-        raise ValueError(f"Unknown toy variant: {toy}")
+class CarFactory(ToyFactoryABC):
+    def build_toy(self):
+        return Car()
 
 
-if __name__ == "__main__":
-    ToyFactory.create_toy("car")
-    ToyFactory.create_toy("doll")
+class DollFactory(ToyFactoryABC):
+    def build_toy(self):
+        return Doll()
+
+
+if __name__ == '__main__':
+    car = CarFactory()
+    car.build()
+    dool = DollFactory()
+    dool.build()
